@@ -30,7 +30,7 @@ export default {
     }
 
     function setConnect() {
-      const url = SockJS('http://tmthosting.sunmonkey.ml:9000/websocket')
+      const url = SockJS('https://tmthosting.sunmonkey.ml:9000/websocket')
       stompClient = stomp.over(url)
       stompClient.connect({}, () => {
         store.commit('setupStomp', stompClient)
