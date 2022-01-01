@@ -7,8 +7,8 @@ export default createStore({
     }],
     stompClient: null,
     messages: [{
-      name: null,
-      content: null
+      name: "",
+      content: "Hi，歡迎"
     }],
     helloMessage: {
       message: null

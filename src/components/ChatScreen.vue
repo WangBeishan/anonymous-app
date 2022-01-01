@@ -1,11 +1,11 @@
 <template>
   <div class="col-8 d-flex flex-column p-0 justify-content-between p-3 border border-top-0 chatScreen">
     <div class="d-flex flex-column justify-content-between chat">
-      <div class="messages">
+      <div class="messages" id="scroll">
         <div
             v-for="(message, index) in storeMessage"
             :key="index"
-            class="d-flex gap-2 w-75 mb-4 bubble"
+            class="d-flex gap-2 mb-4 bubble"
             :class="{ self: session == message.name}"
         >
           <div class="text">
@@ -48,6 +48,8 @@ export default {
       const name = sessionStorage.getItem("user")
       stompClient.value.send('/app/send', {}, JSON.stringify({'name': name, 'content': message.content}))
       message.content = ""
+      const scroll = document.getElementById('scroll')
+      scroll.scrollTop = scroll.scrollHeight
     }
 
     return {
@@ -87,7 +89,7 @@ h2 {
   height: 70vh;
   width: 100%;
   padding-right: 2em;
-  overflow: auto;
+  overflow-y: scroll;
 }
 
 .messages::-webkit-scrollbar {
