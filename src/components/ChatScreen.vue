@@ -23,6 +23,7 @@
         id="message"
         v-model="message.content"
         @keyup.enter="sendContent">
+      <button type="button" @click="sendContent" class="btn phone">Send</button>
     </div>
   </div>
 </template>
@@ -70,6 +71,11 @@ export default {
   transition: 0.2s;
   color: var(--black1);
   width: 100%;
+}
+.phone {
+  background: var(--purple1);
+  color: white;
+  font-weight: bold;
 }
 
 h2 {
